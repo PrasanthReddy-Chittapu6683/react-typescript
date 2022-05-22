@@ -45,7 +45,7 @@
 
 ### Object propTypes
 
-    ```javascript
+  ```javascript
     type PersonPropTpes = {
         personObject: {
             fName: string,
@@ -60,19 +60,19 @@
 
     export default Person
 
-    ```
+```
 -   App.tsx:
-    ```javascript
+  ```javascript
     const personNameDetails = {
         fName: 'Prasanth',
         lName: 'CV'
     }
     <Person personObject={personNameDetails}></Person>
-    ```
+```
 
 ### Array propTypes
 
-     ```javascript
+  ```javascript
     type PersonListPropTypes = {
         names: {
             fName: string,
@@ -94,9 +94,9 @@
     }
 
     export default PersonList
-    ```
+```
 -   App.tsx:
-    ```
+  ```javascript
     const nameList = [
         {
         fName: 'Prasanth',
@@ -112,4 +112,4 @@
         }
     ]
      <PersonList names={nameList}></PersonList>
-    ```
+```
