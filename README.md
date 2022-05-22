@@ -73,7 +73,7 @@
 ### Array propTypes
 
   ```javascript
-    type PersonListPropTypes = {
+     type PersonListPropTypes = {
         names: {
             fName: string,
             lName: string
