@@ -8,6 +8,8 @@
 ##  Prop Types
 
 ### string, number, boolean propTypes
+
+`messageCount?: number; Here ? is used to make this Prop as optional`
 -   TypingProps1.tsx:
  ```javascript
     type TypingProps1Props = {
@@ -17,11 +19,11 @@
     }
 
     const TypingProps1 = (props: TypingProps1Props) => {
-
+        const { messageCount = 0 } = props;
         return (
             <div>
             {
-                props.isLoggedIn ? `Welcome ${props.name}! Your message count is ${props.messageCount}`
+                props.isLoggedIn ? `Welcome ${props.name}! Your message count is ${messageCount}`
                 : `Welcome Guest`
             }
 
@@ -166,6 +168,8 @@
 ```
 
 ### PropTypes: Pass React Component as Prop's 
+
+`React.ReactNode is used to define the Props for React Components`
 
 ```javascript
     type OscarProps = {
