@@ -69,11 +69,10 @@
     }
     <Person personObject={personNameDetails}></Person>
 ```
-
 ### Array propTypes
 
   ```javascript
-     type PersonListPropTypes = {
+    type PersonListPropTypes = {
         names: {
             fName: string,
             lName: string
@@ -112,4 +111,82 @@
         }
     ]
      <PersonList names={nameList}></PersonList>
+```
+
+### PropTypes: Union of String literals
+
+```javascript
+    type StatusProps = {
+        status: 'loading' | 'success' | 'error'
+    }
+
+    const Status = (props: StatusProps) => {
+        let message
+        if (props.status === 'loading')
+            message = 'Loading...'
+        else if (props.status === 'success')
+            message = 'Success !!!'
+        else if (props.status === 'error')
+            message = '<<< Error >>>'
+        return (
+            <div>Status - {message}</div>
+        )
+    }
+
+
+    export default Status
+```
+
+-   App.tsx:
+
+```javascript
+    <Status status='loading'></Status>
+```
+
+
+### PropTypes: Children Prop's pass to a React Component 
+```javascript
+    type HeadingProps = {
+        children: string;
+    }
+    const Heading = (props: HeadingProps) => {
+        return (
+            <div>{props.children}</div>
+        )
+    }
+
+    export default Heading
+```
+-   App.tsx:
+
+```javascript
+    <Heading>
+        Placeholder tp pass childer as a Props
+    </Heading>
+```
+
+### PropTypes: Pass React Component as Prop's 
+
+```javascript
+    type OscarProps = {
+        children: React.ReactNode
+    }
+
+    const Oscar = (props: OscarProps) => {
+        return (
+            <div>{props.children}</div>
+        )
+    }
+
+    export default Oscar
+```
+
+-   App.tsx:
+
+```javascript
+    <Oscar>
+        <Heading>
+            Passing Header Component as Props
+        </Heading>
+    </Oscar>
 ```

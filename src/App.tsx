@@ -4,6 +4,9 @@ import './App.css';
 import TypingProps1 from './components/TypingProps1';
 import Person from './components/Person';
 import PersonList from './components/PersonList';
+import Status from './components/Status';
+import Heading from './components/Heading';
+import Oscar from './components/Oscar';
 
 function App() {
   const personNameDetails = {
@@ -29,6 +32,15 @@ function App() {
       <TypingProps1 isLoggedIn={true} name='Prasanth' messageCount={10}></TypingProps1>
       <Person personObject={personNameDetails}></Person>
       <PersonList names={nameList}></PersonList>
+      <Status status='loading'></Status>
+      <Heading>
+        Placeholder tp pass childer as a Props
+      </Heading>
+      <Oscar>
+        <Heading>
+          Passing Header Component as Props
+        </Heading>
+      </Oscar>
     </div>
   );
 }
