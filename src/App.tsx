@@ -1,24 +1,34 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import TypingProps1 from './components/TypingProps1';
+import Person from './components/Person';
+import PersonList from './components/PersonList';
 
 function App() {
+  const personNameDetails = {
+    fName: 'Prasanth',
+    lName: 'CV'
+  }
+  const nameList = [
+    {
+      fName: 'Prasanth',
+      lName: 'CV'
+    },
+    {
+      fName: 'John',
+      lName: 'D'
+    },
+    {
+      fName: 'Clark',
+      lName: 'Kent'
+    }
+  ]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TypingProps1 isLoggedIn={true} name='Prasanth' messageCount={10}></TypingProps1>
+      <Person personObject={personNameDetails}></Person>
+      <PersonList names={nameList}></PersonList>
     </div>
   );
 }
