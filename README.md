@@ -194,3 +194,177 @@
         </Heading>
     </Oscar>
 ```
+
+
+### Event Props: Pass Events as Props
+
+
+`void is used here when function doesnt have any retun`
+
+
+```javascript
+    type ButtonProps = {
+    handleButtonClick: () => void // void is used here when function doesnt have any retun
+    }
+    const ButtonComponent = (props: ButtonProps) => {
+    return (
+        <button onClick={props.handleButtonClick}>Button</button>
+    )
+    }
+
+    export default ButtonComponent
+```
+-   App.tsx:
+
+```javascript
+    <ButtonComponent handleButtonClick={() => {
+        alert('Button Clicked')
+      }} />
+```
+
+### Another type of Event handler is when click event want to pass an event 
+
+``` javascript
+    type ButtonComponentProps = {
+    handleButtonClick: () => void // void is used here when function doesnt have any retun
+    handleButtonEventClick: (event: React.MouseEvent<HTMLButtonElement>, id: number) => void
+    }
+    const ButtonComponent = (props: ButtonComponentProps) => {
+    return (
+        <>
+        <button onClick={props.handleButtonClick}>Button</button>
+        <button onClick={(eve) => props.handleButtonEventClick(eve, 1)}>Event-Button</button>
+        </>
+    )
+    }
+
+    export default ButtonComponent
+```
+
+-   App.tsx:
+
+```javascript
+    <ButtonComponent handleButtonEventClick={(event, id) => {
+        alert(`Event Button clicked ${event} - ID - ${id}`)
+      }} handleButtonClick={() => {
+        alert('Button Clicked')
+      }} />
+```
+
+### Event handler for Input textbox
+
+```javascript
+    import React from "react";
+
+    type InputProps = {
+        value: string;
+        onChangeHandler: (event: React.ChangeEvent<HTMLInputElement>) => void
+
+    }
+
+    const Input = (props: InputProps) => {
+        const onChangeLocalHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+            alert(`Change Local Event - ${event.target.value}`)
+        }
+        return (
+            <>
+                <input type={'text'} value={props.value} onChange={props.onChangeHandler} />
+                <input type={'text'} value={'Local Event change'} onChange={onChangeLocalHandler} />
+            </>
+        )
+    }
+
+    export default Input
+```
+
+-   App.tsx
+
+```javascript
+    <Input value='Text' onChangeHandler={(event) => {
+        alert(`Change Event - ${event.target.value}`)
+      }} />
+```
+
+
+## Style Props
+
+```javascript
+    type ContainerProps = {
+    styles: React.CSSProperties
+    };
+
+    export const Container = (props: ContainerProps) => {
+    return <div style={props.styles}>container</div>;
+    };
+```
+-   App.tsx
+
+```javascript
+    <Container styles={{ border: '1px solid red', padding: '1rem', backgroundColor: 'red' }} />
+```
+
+## Simple `useState`
+
+```javascript
+    import { useState } from 'react'
+
+    const LoggedIn = () => {
+        const [isLoggedIn, setIsLoggedIn] = useState(false)
+        const handleLoggedIn = () => {
+            setIsLoggedIn(true)
+        }
+        const handleLoggedout = () => {
+            setIsLoggedIn(false)
+        }
+
+        return (
+            <div>
+                <button onClick={handleLoggedIn}>Login</button>
+                <button onClick={handleLoggedout}>Logout</button>
+                <div>User is {isLoggedIn ? 'Loggedin' : 'Logout'}</div>
+            </div>
+        )
+    }
+
+    export default LoggedIn
+```
+
+## Future Values in `useState`
+
+<b>`NOTE: const [user, setUser] = useState<null | AuthUser>(null)` </b>
+
+
+```javascript
+    import { useState } from 'react'
+
+type AuthUser = {
+    name?: string
+    email?: string
+}
+
+
+const User = ({ name, email }: AuthUser) => {
+
+    const [user, setUser] = useState<null | AuthUser>(null)
+    const handleLoggedIn = () => {
+        setUser({
+            name: 'Prasanth',
+            email: 'prasanthreddy.chittapu@gmail.com'
+        })
+    }
+    const handleLoggedout = () => {
+        setUser(null)
+    }
+
+    return (
+        <div>
+            <button onClick={handleLoggedIn}>Login</button>
+            <button onClick={handleLoggedout}>Logout</button>
+            <div>User name is {user?.name}</div>
+            <div>User email is {user?.email}</div>
+        </div>
+    )
+}
+
+export default User
+```

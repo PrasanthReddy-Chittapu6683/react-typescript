@@ -7,6 +7,11 @@ import PersonList from './components/PersonList';
 import Status from './components/Status';
 import Heading from './components/Heading';
 import Oscar from './components/Oscar';
+import ButtonComponent from './components/ButtonComponent';
+import Input from './components/Input';
+import { Container } from './components/container';
+import LoggedIn from './components/states/LoggedIn';
+import User from './components/states/User';
 
 function App() {
   const personNameDetails = {
@@ -41,6 +46,22 @@ function App() {
           Passing Header Component as Props
         </Heading>
       </Oscar>
+      <ButtonComponent handleButtonEventClick={(event, id) => {
+        alert(`Event Button clicked ${event} - ID - ${id}`)
+      }} handleButtonClick={() => {
+        alert('Button Clicked')
+      }} />
+
+      <Input value='Text' onChangeHandler={(event) => {
+        alert(`Change Event - ${event.target.value}`)
+      }} />
+
+
+      <Container styles={{ border: '1px solid red', padding: '1rem', backgroundColor: 'red' }} />
+
+      <LoggedIn></LoggedIn>
+      <User ></User>
+
     </div>
   );
 }
