@@ -24,6 +24,7 @@ import RandomNumber from './components/resctriction/RandomNumber';
 import Toast from './components/templateliterals/Toast';
 import CustomButton from './components/htmlElements/CustomButton';
 import CustomInput from './components/htmlElements/CustomInput';
+import Text from './components/polymorphic/Text';
 
 
 function App() {
@@ -101,6 +102,10 @@ function App() {
         Primary Button Text
       </CustomButton>
       <CustomInput variant='secondary' />
+
+      <Text as={'h1'} size={'lg'} color={'primary'}>  Heading</Text>
+      <Text as={'p'} size={'md'} color={'primary'}> Paragraph </Text>
+      <Text as={'label'} htmlFor='example' color={'primary'} size={'sm'}>Label</Text>
     </div>
   );
 }

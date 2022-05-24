@@ -892,3 +892,41 @@ export default List
     }
 
 ```
+
+
+# Polymorphic Components
+
+```javascript
+    import React from 'react'
+
+    type TextOwnProps<E extends React.ElementType> = {
+    size?: 'sm' | 'lg' | 'md'
+    color?: 'primary' | 'secondary'
+    children: React.ReactNode,
+    as?: E
+    }
+
+    type TextProps<E extends React.ElementType> = TextOwnProps<E> &
+    Omit<React.ComponentProps<E>, keyof TextOwnProps<E>>
+
+    const Text = <E extends React.ElementType = 'div'>({
+    size,
+    color,
+    children,
+    as
+    }: TextProps<E>) => {
+    const Component = as || 'div'
+    return (
+        <Component className={`class-with${size}-${color}`}>{children}</Component>
+    )
+    }
+
+    export default Text
+
+```
+
+```javascript
+    <Text as={'h1'} size={'lg'} color={'primary'}>  Heading</Text>
+    <Text as={'p'} size={'md'} color={'primary'}> Paragraph </Text>
+    <Text as={'label'} htmlFor='example' color={'primary'} size={'sm'}>Label</Text>
+```
