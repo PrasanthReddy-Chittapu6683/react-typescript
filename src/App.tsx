@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import TypingProps1 from './components/TypingProps1';
+import Greet from './components/Greet';
 import Person from './components/Person';
 import PersonList from './components/PersonList';
 import Status from './components/Status';
@@ -12,6 +12,19 @@ import Input from './components/Input';
 import { Container } from './components/container';
 import LoggedIn from './components/states/LoggedIn';
 import User from './components/states/User';
+import { Counter } from './components/states/Counter';
+
+import { ThemeContextProvider } from './components/context/ThemeContext'
+import Box from './components/context/Box';
+
+import { UserContextProvider } from './components/context/UserContext'
+import UserDetails from './components/context/UserDetails';
+import List from './components/generics/List';
+import RandomNumber from './components/resctriction/RandomNumber';
+import Toast from './components/templateliterals/Toast';
+import CustomButton from './components/htmlElements/CustomButton';
+import CustomInput from './components/htmlElements/CustomInput';
+
 
 function App() {
   const personNameDetails = {
@@ -34,7 +47,7 @@ function App() {
   ]
   return (
     <div className="App">
-      <TypingProps1 isLoggedIn={true} name='Prasanth' messageCount={10}></TypingProps1>
+      <Greet isLoggedIn={true} name='Prasanth' messageCount={10}></Greet>
       <Person personObject={personNameDetails}></Person>
       <PersonList names={nameList}></PersonList>
       <Status status='loading'></Status>
@@ -62,6 +75,32 @@ function App() {
       <LoggedIn></LoggedIn>
       <User ></User>
 
+      <Counter></Counter>
+
+      <ThemeContextProvider>
+        <Box />
+      </ThemeContextProvider>
+
+      <UserContextProvider>
+        <UserDetails />
+      </UserContextProvider>
+
+      <List items={[{ id: 1, value: 'Thor' }, { id: 2, value: 'Iron Man' },
+      { id: 3, value: 'Wonder Women' }]} onClick={(item) => alert(item)} />
+
+      <RandomNumber value={10} isZero></RandomNumber>
+      {/* Throws error :: 
+       <RandomNumber value={10} isPositive isZero></RandomNumber>
+      <RandomNumber value={10} isNegative isZero></RandomNumber> 
+      */}
+
+      <Toast toastPosition='center' />
+
+      <CustomButton variant='primary' onClick={() => alert('Clicked !!!')}>
+        {/* <div> Primary Button Text </div> */}
+        Primary Button Text
+      </CustomButton>
+      <CustomInput variant='secondary' />
     </div>
   );
 }

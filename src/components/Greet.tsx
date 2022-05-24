@@ -6,7 +6,7 @@ type TypingProps1Props = {
   isLoggedIn: boolean
 }
 
-const TypingProps1 = (props: TypingProps1Props) => {
+const Greet = (props: TypingProps1Props) => {
 
   return (
     <div>
@@ -19,4 +19,4 @@ const TypingProps1 = (props: TypingProps1Props) => {
   )
 }
 
-export default TypingProps1
+export default Greet
